@@ -6,9 +6,19 @@ const RECOMMENDED_COURSES = [
         url: "https://learn.microsoft.com/en-us/training/paths/azure-fundamentals/"
     },
     {
-        title: "Introduction to Azure OpenAI Service",
-        description: "Learn how to build AI solutions using OpenAI models for text generation, code completion, and image generation.",
-        url: "https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-openai/"
+        title: "Fundamentals of Generative AI",
+        description: "Understand the core concepts of generative artificial intelligence, large language models, and how to create AI applications responsibly.",
+        url: "https://learn.microsoft.com/en-us/training/modules/fundamentals-generative-ai/"
+    },
+    {
+        title: "Get Started with AI Fundamentals",
+        description: "Explore standard machine learning, cognitive services, computer vision, and natural language processing concepts.",
+        url: "https://learn.microsoft.com/en-us/training/modules/get-started-ai-fundamentals/"
+    },
+    {
+        title: "Describe Cloud Concepts (AZ-900)",
+        description: "Learn about cloud computing benefits, public/private/hybrid cloud models, and standard cloud service types.",
+        url: "https://learn.microsoft.com/en-us/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/"
     },
     {
         title: "GitHub Foundations",

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MLSA Onboarding & Activity Tracker for Noor Islam">
+    <title>Ambassador Launchpad</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 23 23" fill="currentColor" width="24" height="24">
+                        <rect x="0" y="0" width="11" height="11" fill="#F25022"/>
+                        <rect x="12" y="0" width="11" height="11" fill="#7FBA00"/>
+                        <rect x="0" y="12" width="11" height="11" fill="#00A4EF"/>
+                        <rect x="12" y="12" width="11" height="11" fill="#FFB900"/>
+                    </svg>
+                </div>
+                <span>Ambassador Launchpad</span>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#overview" class="menu-item active" id="nav-overview">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                        <rect x="3" y="3" width="7" height="9" rx="1"></rect>
+                        <rect x="14" y="3" width="7" height="5" rx="1"></rect>
+                        <rect x="14" y="12" width="7" height="9" rx="1"></rect>
+                        <rect x="3" y="16" width="7" height="5" rx="1"></rect>
+                    </svg>
+                    <span>Overview</span>
+                </a>
+                <a href="#url-builder" class="menu-item" id="nav-url-builder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                    </svg>
+                    <span>URL Builder</span>
+                </a>
+                <a href="#checklist" class="menu-item" id="nav-checklist">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                        <path d="M9 11l3 3L22 4"></path>
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                    </svg>
+                    <span>Checklist</span>
+                </a>
+                <a href="#activity-logger" class="menu-item" id="nav-activity-logger">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4z"></path>
+                    </svg>
+                    <span>Activity Log</span>
+                </a>
+                <a href="#resources" class="menu-item" id="nav-resources">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    <span>Resources</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="theme-toggle" id="theme-btn">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <span>Toggle Light Mode</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Content -->
+        <main class="main-content">
+            <!-- Header Profile Area -->
+            <header class="dashboard-header">
+                <div class="header-profile">
+                    <div class="profile-avatar">NI</div>
+                    <div class="profile-info">
+                        <h1>Noor Islam</h1>
+                        <p class="profile-title">Microsoft Learn Student Ambassador Candidate</p>
+                    </div>
+                </div>
+                <div class="header-metrics">
+                    <div class="metric-badge contributor-id-badge" onclick="copyContributorID()" title="Click to copy ID">
+                        <span class="badge-label">Contributor ID:</span>
+                        <code id="contributor-id-display">studentamb_515349</code>
+                        <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </div>
+                    <div class="metric-badge status-badge warning">
+                        <span class="status-dot animate-pulse"></span>
+                        <span>Under Review</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Sections Grid -->
+            <div class="dashboard-grid">
+                
+                <!-- Section 1: Overview & Metrics -->
+                <section id="overview" class="dashboard-section active">
+                    <div class="section-title-wrapper">
+                        <h2>Overview & Progress</h2>
+                        <p class="section-desc">Track your progress to unlocking the full Student Ambassador benefits.</p>
+                    </div>
+
+                    <!-- Stats Cards Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon purple">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="stat-checklist-completion">0%</h3>
+                                <p>Onboarding Tasks Completed</p>
+                            </div>
+                            <div class="stat-progress">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-fill" id="bar-checklist" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="stat-links-generated">0</h3>
+                                <p>Contributor Links Built</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon green">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                                    <polyline points="16 6 12 2 8 6"></polyline>
+                                    <line x1="12" y1="2" x2="12" y2="15"></line>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="stat-activities-logged">0</h3>
+                                <p>Activities Logged</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Core Requirements Warning / Guidance -->
+                    <div class="alert-banner info">
+                        <div class="alert-icon">💡</div>
+                        <div class="alert-content">
+                            <h4>How to get verified as a Student Ambassador</h4>
+                            <p>You have registered and are currently a <strong>Registered Member (Under Review)</strong>. To unlock full access (including Azure credits, Microsoft 365, your @studentambassadors.com email, and LinkedIn Learning):</p>
+                            <ul>
+                                <li>Complete the account linkage in Discord.</li>
+                                <li>Complete the Technical Training (Cloud Skills Challenge).</li>
+                                <li>Perform and log registration activities (e.g., share Learn content, host events) with your Contributor ID.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Quick Start Checklist Summary -->
+                    <div class="card overview-card">
+                        <div class="card-header">
+                            <h3>Next Key Milestones</h3>
+                            <button class="btn btn-text" onclick="showSection('checklist')">View Checklist &rarr;</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="milestone-list" id="milestones-preview">
+                                <!-- Populated dynamically by app.js -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recommended Learning Paths (Referral Links) -->
+                    <div class="card margin-top">
+                        <div class="card-header">
+                            <h3>Recommended Microsoft Learn Courses</h3>
+                            <span class="badge success-badge">Referral Links Active</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="small-text text-muted margin-bottom-sm">Share this dashboard link with your peers. Anyone who clicks these courses to start learning will contribute to your Contributor ID activity metrics!</p>
+                            <div class="grid-two-cols" id="recommended-courses-container">
+                                <!-- Populated dynamically by app.js -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: Contributor URL Builder -->
+                <section id="url-builder" class="dashboard-section">
+                    <div class="section-title-wrapper">
+                        <h2>Contributor Link Builder</h2>
+                        <p class="section-desc">Microsoft tracks your community outreach by monitoring visits tagged with your Contributor ID. Build compliant URLs here.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Generate Contributor Link</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="config-contributor-id">Your Contributor ID</label>
+                                <input type="text" id="config-contributor-id" class="form-control code-font" placeholder="e.g. studentamb_515349" style="max-width: 300px; margin-bottom: 1rem;">
+                                <span class="help-text">Change this to your own custom Contributor ID from your invitation email.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="input-url">Microsoft URL (e.g. Learn Module, Event Page, Azure Student Sign Up)</label>
+                                <div class="input-with-button">
+                                    <input type="text" id="input-url" placeholder="https://learn.microsoft.com/en-us/training/paths/az-900..." class="form-control">
+                                    <button class="btn btn-primary" id="btn-generate-url">Generate</button>
+                                </div>
+                                <span class="help-text">Input any valid Microsoft domain (microsoft.com, learn.microsoft.com, etc.)</span>
+                            </div>
+
+                            <div class="generator-result hidden" id="generator-result-box">
+                                <div class="form-group">
+                                    <label>Tagged Contributor URL</label>
+                                    <div class="output-copy-box">
+                                        <input type="text" id="output-url" class="form-control code-font" readonly>
+                                        <button class="btn btn-secondary" id="btn-copy-url">
+                                            <span>Copy</span>
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="link-stats-info">
+                                    <div class="badge success-badge">Parameter Appended: <code class="code-font">wt.mc_id=studentamb_515349</code></div>
+                                    <p class="small-text">Always share this generated URL. When users visit it, Microsoft's backend attributes the traffic to your profile.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Link Generation History -->
+                    <div class="card margin-top">
+                        <div class="card-header">
+                            <h3>Link Generation History</h3>
+                            <button class="btn btn-danger-text btn-sm" id="btn-clear-links">Clear History</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="data-table" id="links-history-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Original Domain</th>
+                                            <th>Created</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="links-history-body">
+                                        <tr>
+                                            <td colspan="3" class="text-center text-muted">No links generated yet.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: Onboarding Checklist -->
+                <section id="checklist" class="dashboard-section">
+                    <div class="section-title-wrapper">
+                        <h2>Onboarding Steps</h2>
+                        <p class="section-desc">Complete these essential steps to set up your account and unlock candidate verification.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Setup Action items</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="checklist-items">
+                                <!-- Item 1 -->
+                                <div class="checklist-item done">
+                                    <div class="check-container">
+                                        <input type="checkbox" id="chk-discord" checked disabled>
+                                        <label for="chk-discord"></label>
+                                    </div>
+                                    <div class="item-content">
+                                        <h4>Join the Microsoft Student Developer Community on Discord <span class="badge success-badge">Completed</span></h4>
+                                        <p>You have joined the Discord server! This is the primary community hub for notifications, questions, and networking.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Item 2 -->
+                                <div class="checklist-item" id="item-discord-link">
+                                    <div class="check-container">
+                                        <input type="checkbox" class="chk-item" data-id="discord-link" id="chk-discord-link">
+                                        <label for="chk-discord-link"></label>
+                                    </div>
+                                    <div class="item-content">
+                                        <h4>Link Discord Account to GitHub in `#start-here`</h4>
+                                        <p>Go to the <strong>#start-here</strong> channel on the Discord server. Locate the verification bot's message. Follow the interactive steps to link your Discord account with your GitHub account. This unlocks the rest of the server channels (like <strong>#registration-help</strong>, <strong>#announcements</strong>, etc.).</p>
+                                    </div>
+                                </div>
+
+                                <!-- Item 3 -->
+                                <div class="checklist-item" id="item-azure-students">
+                                    <div class="check-container">
+                                        <input type="checkbox" class="chk-item" data-id="azure-students" id="chk-azure-students">
+                                        <label for="chk-azure-students"></label>
+                                    </div>
+                                    <div class="item-content">
+                                        <h4>Link Azure for Students & Verify Academic Status</h4>
+                                        <p>Confirm your student status in the Student Ambassadors Portal. You must verify and sign up for an <strong>Azure for Students</strong> account (requires your academic email or school verification). Ensure you use the same Microsoft Account email you registered with.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Item 4 -->
+                                <div class="checklist-item" id="item-tech-training">
+                                    <div class="check-container">
+                                        <input type="checkbox" class="chk-item" data-id="tech-training" id="chk-tech-training">
+                                        <label for="chk-tech-training"></label>
+                                    </div>
+                                    <div class="item-content">
+                                        <h4>Complete the Cloud Skills Challenge Technical Training</h4>
+                                        <p>As a candidate, you are required to complete a selected Microsoft Learn Learning Path (Technical Training) to demonstrate commitment. Check the Discord server's <strong>#announcements</strong> or <strong>#start-here</strong> for the active challenge link. <em>Remember to use a link containing your Contributor ID to access it!</em></p>
+                                    </div>
+                                </div>
+
+                                <!-- Item 5 -->
+                                <div class="checklist-item" id="item-first-activity">
+                                    <div class="check-container">
+                                        <input type="checkbox" class="chk-item" data-id="first-activity" id="chk-first-activity">
+                                        <label for="chk-first-activity"></label>
+                                    </div>
+                                    <div class="item-content">
+                                        <h4>Complete and Log Your First Registration Activity</h4>
+                                        <p>Share a useful Microsoft Learn course on your LinkedIn, Twitter, or Discord community. Make sure to generate the contributor-tagged URL in the <strong>URL Builder</strong> first! Once done, log the activity in the <strong>Activity Log</strong> tab.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4: Activity Logger -->
+                <section id="activity-logger" class="dashboard-section">
+                    <div class="section-title-wrapper">
+                        <h2>Activity Logger</h2>
+                        <p class="section-desc">Keep a local log of all the promotional work you perform for Microsoft Learn. You can use these records when filling out milestone verification reports.</p>
+                    </div>
+
+                    <div class="grid-two-cols">
+                        <!-- Left Column: Form -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Log New Activity</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="form-activity" onsubmit="handleActivitySubmit(event)">
+                                    <div class="form-group">
+                                        <label for="act-type">Activity Type</label>
+                                        <select id="act-type" class="form-control" required>
+                                            <option value="">-- Select Type --</option>
+                                            <option value="Social Share">Social Media Share (LinkedIn, X, etc.)</option>
+                                            <option value="Event Hosted">Event/Workshop Hosted</option>
+                                            <option value="Startups Referral">Founders Hub Referral</option>
+                                            <option value="Learn Collection">Microsoft Learn Collection Share</option>
+                                            <option value="Other">Other Promotion</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="act-title">Title / Topic Name</label>
+                                        <input type="text" id="act-title" placeholder="e.g. Shared Git/GitHub Learn path on LinkedIn" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="act-date">Date Performed</label>
+                                        <input type="date" id="act-date" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="act-url">Shared/Target URL (Include Contributor ID)</label>
+                                        <input type="url" id="act-url" placeholder="https://learn.microsoft.com/en-us/...?wt.mc_id=studentamb_515349" class="form-control">
+                                        <span class="help-text">Click URL Builder tab if you need to generate one first.</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="act-impact">Impact Metric (Views, Clicks, Attendee Count)</label>
+                                        <input type="text" id="act-impact" placeholder="e.g. 15 clicks, 45 attendees" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="act-notes">Proof/Links/Notes</label>
+                                        <textarea id="act-notes" rows="3" placeholder="Paste link to social post, screenshots folder, or attendee feedback notes here..." class="form-control"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-block">Add to Log</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Stats & Reference -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Guidance for Activities</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="guidance-box">
+                                    <h5>📱 Social Shares</h5>
+                                    <p class="small-text text-muted margin-bottom-sm">Share learn paths or community announcements on LinkedIn, X, or tech communities. Highlight what you learned, and include your custom URL.</p>
+
+                                    <h5>🎤 Workshops & Events</h5>
+                                    <p class="small-text text-muted margin-bottom-sm">Host a virtual study group or local college demo of Azure tools or Power Apps. Create a Microsoft RSVP link (with your Contributor ID!) for registrations.</p>
+
+                                    <h5>🚀 Startups Referral</h5>
+                                    <p class="small-text text-muted">Advocate for campus entrepreneurs by telling them about the Microsoft Founders Hub. Guide them to sign up using your contributor-linked Founders Hub page.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Log Table -->
+                    <div class="card margin-top">
+                        <div class="card-header">
+                            <h3>Logged Activities History</h3>
+                            <div class="header-actions">
+                                <button class="btn btn-secondary-text btn-sm" id="btn-export-json">Export JSON</button>
+                                <button class="btn btn-secondary-text btn-sm" id="btn-import-trigger">Import JSON</button>
+                                <input type="file" id="import-file-input" class="hidden" accept=".json">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="data-table" id="activities-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Title</th>
+                                            <th>Date</th>
+                                            <th>Impact</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="activities-body">
+                                        <tr>
+                                            <td colspan="5" class="text-center text-muted">No activities logged yet.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 5: Handbooks & Resources -->
+                <section id="resources" class="dashboard-section">
+                    <div class="section-title-wrapper">
+                        <h2>Handbooks & Resources</h2>
+                        <p class="section-desc">Key external sites and quick guides to help you make the most of the MLSA program.</p>
+                    </div>
+
+                    <div class="grid-three-cols">
+                        <!-- Resource 1 -->
+                        <div class="card resource-card">
+                            <div class="card-body">
+                                <div class="resource-icon flex-center">💬</div>
+                                <h3>Discord Community</h3>
+                                <p class="text-muted small-text">Interact with other Student Ambassadors worldwide. Ask questions in the <strong>#registration-help</strong> channel or explore <strong>#ambassadors-faq</strong>.</p>
+                                <a href="https://discord.gg/microsoft-student-developer-community" target="_blank" class="btn btn-outline btn-block btn-sm">Open Discord</a>
+                            </div>
+                        </div>
+
+                        <!-- Resource 2 -->
+                        <div class="card resource-card">
+                            <div class="card-body">
+                                <div class="resource-icon flex-center">🌐</div>
+                                <h3>Student Ambassador Portal</h3>
+                                <p class="text-muted small-text">The official dashboard where you check application/registration status, edit your profile, and eventually submit promotional milestone reports.</p>
+                                <a href="https://studentambassadors.microsoft.com/" target="_blank" class="btn btn-outline btn-block btn-sm">Go to Portal</a>
+                            </div>
+                        </div>
+
+                        <!-- Resource 3 -->
+                        <div class="card resource-card">
+                            <div class="card-body">
+                                <div class="resource-icon flex-center">📘</div>
+                                <h3>Microsoft Learn</h3>
+                                <p class="text-muted small-text">Access thousands of free modules. Complete technical challenges here. Make sure to append your contributor code when sharing paths!</p>
+                                <a href="https://learn.microsoft.com/" target="_blank" class="btn btn-outline btn-block btn-sm">Open MS Learn</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Helpful Tips Box -->
+                    <div class="card margin-top">
+                        <div class="card-header">
+                            <h3>Pro-Tips for Registered Members</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="tips-container">
+                                <div class="tip-item">
+                                    <div class="tip-num">1</div>
+                                    <div class="tip-text">
+                                        <h5>Keep Emails Aligned</h5>
+                                        <p>Make sure you use the exact same Microsoft account email address for: the MLSA portal, Microsoft Learn, Azure for Students, and your Discord/GitHub linkage. If the emails differ, your progress tracking will fail.</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <div class="tip-num">2</div>
+                                    <div class="tip-text">
+                                        <h5>Track Everything</h5>
+                                        <p>Whenever you share a post, host a small chat, or guide someone, take a quick screenshot and log it in the Activity tab. Having detailed logs will save you tons of time when submitting milestone reviews.</p>
+                                    </div>
+                                </div>
+                                <div class="tip-item">
+                                    <div class="tip-num">3</div>
+                                    <div class="tip-text">
+                                        <h5>Stay Consistent</h5>
+                                        <p>Completing onboarding is the first hurdle. Try to share at least 1-2 tagged items per week and check the Discord server for technical challenges to fast-track your approval.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Alert toast notification popup -->
+    <div id="toast" class="toast hidden">URL Copied!</div>
+
+    <!-- JS Logic -->
+    <script src="app.js"></script>
+</body>
+</html>

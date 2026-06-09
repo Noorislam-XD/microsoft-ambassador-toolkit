@@ -1,5 +1,7 @@
 # Ambassador Launchpad: MLSA Onboarding & Activity Tracker
 
+
+
 A local, interactive helper application to manage your onboarding checklist, correctly tag promotional links with your unique Contributor ID, and log your outreach activities.
 
 ## 🚀 Features
@@ -37,21 +39,3 @@ If you prefer running a local server to test the full web app experience:
 
 ---
 
-## 📋 Recommended Onboarding Steps (Noor Islam)
-
-Since you have already joined the Discord server, follow these next steps to unlock candidate status:
-
-1. **Verify your Account in Discord**:
-   - Go to the `#start-here` channel in the Microsoft Student Developer Community server.
-   - Look for the verification bot message and click it.
-   - Authorize the bot to link your Discord account with your GitHub account.
-   
-2. **Setup your Contributor ID**:
-   - The dashboard comes pre-configured with your Contributor ID: `studentamb_515349`.
-   - Use the **URL Builder** tab inside the dashboard to generate and copy links to Azure or Microsoft Learn courses.
-   
-3. **Complete Technical Training**:
-   - Access the Cloud Skills Challenge link (provided in the Discord announcements) and complete the required training module.
-
-4. **Log your Progress**:
-   - Record your learning milestones and any social shares inside the **Activity Log** tab to keep a clean record for your milestone reviews.

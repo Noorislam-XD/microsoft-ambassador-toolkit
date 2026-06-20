@@ -3,32 +3,32 @@ const RECOMMENDED_COURSES = [
     {
         title: "Microsoft Azure Fundamentals (AZ-900)",
         description: "Get started with cloud concepts, core Azure services, management tools, security, and network monitoring.",
-        url: "https://learn.microsoft.com/en-us/training/paths/azure-fundamentals/"
+        url: "https://learn.microsoft.com/training/paths/azure-fundamentals/"
     },
     {
         title: "Fundamentals of Generative AI",
         description: "Understand the core concepts of generative artificial intelligence, large language models, and how to create AI applications responsibly.",
-        url: "https://learn.microsoft.com/en-us/training/modules/fundamentals-generative-ai/"
+        url: "https://learn.microsoft.com/training/modules/fundamentals-generative-ai/"
     },
     {
         title: "Get Started with AI Fundamentals",
         description: "Explore standard machine learning, cognitive services, computer vision, and natural language processing concepts.",
-        url: "https://learn.microsoft.com/en-us/training/modules/get-started-ai-fundamentals/"
+        url: "https://learn.microsoft.com/training/modules/get-started-ai-fundamentals/"
     },
     {
         title: "Describe Cloud Concepts (AZ-900)",
         description: "Learn about cloud computing benefits, public/private/hybrid cloud models, and standard cloud service types.",
-        url: "https://learn.microsoft.com/en-us/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/"
+        url: "https://learn.microsoft.com/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/"
     },
     {
         title: "GitHub Foundations",
         description: "Learn how to collaborate on code, manage repositories, track issues, and use GitHub Actions workflows.",
-        url: "https://learn.microsoft.com/en-us/training/paths/github-foundations/"
+        url: "https://learn.microsoft.com/training/paths/github-foundations/"
     },
     {
         title: "Power Platform Fundamentals (PL-900)",
         description: "Explore the business value and product capabilities of Power Apps, Power Automate, and Power BI.",
-        url: "https://learn.microsoft.com/en-us/training/paths/power-plat-fundamentals/"
+        url: "https://learn.microsoft.com/training/paths/power-plat-fundamentals/"
     }
 ];
 
@@ -215,7 +215,11 @@ function setupUrlBuilder() {
             }
 
             const urlObj = new URL(formattedUrl);
-            
+
+            // Strip language-locale segment from the path (e.g. /en-us/, /fr-fr/)
+            // per Microsoft Student Ambassadors handbook requirement
+            urlObj.pathname = urlObj.pathname.replace(/^\/[a-z]{2}-[a-z]{2}(?=\/|$)/i, '');
+
             // Append/Set Contributor ID
             urlObj.searchParams.set('wt.mc_id', state.contributorId);
             const generated = urlObj.toString();
@@ -403,6 +407,7 @@ function renderRecommendedCourses() {
         try {
             // Build URL with active Contributor ID
             const urlObj = new URL(course.url);
+            urlObj.pathname = urlObj.pathname.replace(/^\/[a-z]{2}-[a-z]{2}(?=\/|$)/i, '');
             urlObj.searchParams.set('wt.mc_id', state.contributorId);
             const finalUrl = urlObj.toString();
 

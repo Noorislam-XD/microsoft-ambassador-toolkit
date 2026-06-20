@@ -1,6 +1,6 @@
 # Ambassador Launchpad: MLSA Onboarding & Activity Tracker
 
-https://noorislam-xd.github.io/ambassador-launchpad
+https://noorislam-xd.github.io/microsoft-ambassador-toolkit
 
 A local, interactive helper application to manage your onboarding checklist, correctly tag promotional links with your unique Contributor ID, and log your outreach activities.
 

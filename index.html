@@ -43,6 +43,18 @@
                     </svg>
                     <span>URL Builder</span>
                 </a>
+                <a href="#eligibility" class="menu-item" id="nav-eligibility">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <span>Eligibility & Rules</span>
+                </a>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                    </svg>
+                    <span>URL Builder</span>
+                </a>
                 <a href="#checklist" class="menu-item" id="nav-checklist">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
                         <path d="M9 11l3 3L22 4"></path>
@@ -110,9 +122,9 @@
                             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                         </svg>
                     </div>
-                    <div class="metric-badge status-badge warning">
+                    <div class="metric-badge status-badge warning" id="ambassador-status-badge" onclick="showSection('eligibility')" style="cursor: pointer;" title="Click to inspect eligibility details">
                         <span class="status-dot animate-pulse"></span>
-                        <span>Under Review</span>
+                        <span id="ambassador-status-text">Checking Status...</span>
                     </div>
                 </div>
             </header>
@@ -125,6 +137,20 @@
                     <div class="section-title-wrapper">
                         <h2>Overview & Progress</h2>
                         <p class="section-desc">Track your progress to unlocking the full Student Ambassador benefits.</p>
+                    </div>
+
+                    <!-- Live Ambassador Eligibility Diagnostic Banner -->
+                    <div id="overview-eligibility-banner" class="eligibility-status-banner status-pending">
+                        <div class="eligibility-banner-left">
+                            <div class="eligibility-banner-icon" id="eligibility-banner-icon">⏳</div>
+                            <div class="eligibility-banner-text">
+                                <h3 id="eligibility-banner-title">Ambassador Status: Action Required</h3>
+                                <p id="eligibility-banner-desc">You are currently completing candidate onboarding. Check which requirements are pending to become fully eligible for Alpha verification.</p>
+                            </div>
+                        </div>
+                        <div class="eligibility-banner-actions">
+                            <button class="btn btn-secondary btn-sm" onclick="showSection('eligibility')">Check Eligibility Details &rarr;</button>
+                        </div>
                     </div>
 
                     <!-- Stats Cards Grid -->
@@ -171,6 +197,18 @@
                             <div class="stat-details">
                                 <h3 id="stat-activities-logged">0</h3>
                                 <p>Activities Logged</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon gold">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <h3 id="stat-points">0</h3>
+                                <p>Ambassador Points Earned</p>
                             </div>
                         </div>
                     </div>
@@ -244,6 +282,18 @@
                                 <span class="help-text">Input any valid Microsoft domain (microsoft.com, learn.microsoft.com, etc.)</span>
                             </div>
 
+                            <div id="url-validator-box" class="url-validator-card warning hidden">
+                                <div class="validator-header">
+                                    <div class="validator-title" id="val-title">
+                                        <span>🔍</span>
+                                        <span id="val-title-text">Checking URL Eligibility...</span>
+                                    </div>
+                                    <span class="points-pill" id="val-points-badge">+10 Points on Share</span>
+                                </div>
+                                <p class="validator-feedback" id="val-feedback"></p>
+                                <div class="validator-badges" id="val-badges"></div>
+                            </div>
+
                             <div class="generator-result hidden" id="generator-result-box">
                                 <div class="form-group">
                                     <label>Tagged Contributor URL</label>
@@ -289,6 +339,143 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                                <!-- Section: Eligibility Rules & Target Directory -->
+                <section id="eligibility" class="dashboard-section">
+                    <div class="section-title-wrapper">
+                        <h2>Eligibility Rules & Target Directory</h2>
+                        <p class="section-desc">Understand how Preferred Visitor eligibility is calculated, inspect your current Ambassador standing, and explore all 23 official Microsoft targets.</p>
+                    </div>
+
+                    <!-- Am I Currently Eligible? Diagnostic Box -->
+                    <div class="card" style="margin-bottom: 2rem;">
+                        <div class="card-header">
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <h3 style="margin: 0;">Am I Currently Eligible for Alpha Advancement?</h3>
+                                <span class="badge" id="eligibility-status-pill">Evaluating...</span>
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="evaluateAndShowEligibilityDiagnostic()">Refresh Diagnostics</button>
+                        </div>
+                        <div class="card-body">
+                            <p class="small-text text-muted" style="margin-bottom: 1.25rem;">
+                                In the Microsoft Learn Student Ambassador program, candidates must satisfy the following 5 requirements to advance from <strong>Registered Member (Under Review)</strong> to <strong>Verified Alpha Ambassador</strong>:
+                            </p>
+                            
+                            <div class="eligibility-checklist-card">
+                                <div id="eligibility-criteria-container">
+                                    <!-- Populated dynamically by app.js -->
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                                <div>
+                                    <span class="small-text text-muted">Total Ambassador Points Earned:</span>
+                                    <strong style="color: #fbbf24; font-size: 1.15rem; margin-left: 0.5rem;" id="eligibility-total-points">0 pts</strong>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="btn btn-primary btn-sm" onclick="showSection('checklist')">Go to Checklist &rarr;</button>
+                                    <button class="btn btn-secondary btn-sm" onclick="showSection('activity-logger')">Log New Activity &rarr;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- How Eligibility Works Rules Cards -->
+                    <div class="card" style="margin-bottom: 2rem;">
+                        <div class="card-header">
+                            <h3>How Eligibility Works (Official Guidelines)</h3>
+                            <span class="badge" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple);">Official Preferred Visitors Rules</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="rules-grid">
+                                <div class="rule-box">
+                                    <div class="rule-num">1</div>
+                                    <div class="rule-content">
+                                        <h5>Domain Scope</h5>
+                                        <p>If a domain is listed, <strong>any page on that domain counts</strong> towards your Preferred Visitors metrics.</p>
+                                    </div>
+                                </div>
+                                <div class="rule-box">
+                                    <div class="rule-num">2</div>
+                                    <div class="rule-content">
+                                        <h5>Path Scope</h5>
+                                        <p>If a path is listed, <strong>that exact path and any pages under it count</strong>.</p>
+                                    </div>
+                                </div>
+                                <div class="rule-box">
+                                    <div class="rule-num">3</div>
+                                    <div class="rule-content">
+                                        <h5>Unlisted Exclusions</h5>
+                                        <p>If the domain or path is <strong>not listed</strong> in the official roster, it <strong>does not count</strong>.</p>
+                                    </div>
+                                </div>
+                                <div class="rule-box">
+                                    <div class="rule-num">4</div>
+                                    <div class="rule-content">
+                                        <h5>Learn Plans Exclusion</h5>
+                                        <p><strong>Microsoft Learn Plans do not count</strong> toward Preferred Visitors, even when the URL uses an eligible domain or path.</p>
+                                    </div>
+                                </div>
+                                <div class="rule-box">
+                                    <div class="rule-num">5</div>
+                                    <div class="rule-content">
+                                        <h5>Direct URLs Only</h5>
+                                        <p><strong>Use direct Microsoft URLs</strong>. Do not use shortened URLs (e.g. <code>aka.ms</code>, <code>bit.ly</code>) or redirect links.</p>
+                                    </div>
+                                </div>
+                                <div class="rule-box">
+                                    <div class="rule-num">6</div>
+                                    <div class="rule-content">
+                                        <h5>Tagged Contributor ID</h5>
+                                        <p>Every shared URL must contain your Contributor ID: <code class="code-font" id="rule-contributor-id-code">studentamb_515349</code> to earn points.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Live Quick Tester Tool -->
+                            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--bg-card-border); border-radius: var(--border-radius-md); padding: 1.25rem; margin-top: 1rem;">
+                                <h4 style="font-size: 1rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    <span>⚡</span> Quick URL Eligibility Tester
+                                </h4>
+                                <p class="small-text text-muted" style="margin-bottom: 0.75rem;">Paste any link to instantly verify whether it meets all Preferred Visitor rules:</p>
+                                <div class="input-with-button" style="display: flex; gap: 0.5rem;">
+                                    <input type="text" id="test-eligibility-url" placeholder="e.g. https://techcommunity.microsoft.com/... or https://aka.ms/..." class="form-control" style="flex: 1;">
+                                    <button class="btn btn-secondary" onclick="runStandaloneEligibilityTest()">Test URL</button>
+                                </div>
+                                <div id="test-eligibility-result" style="margin-top: 0.75rem; font-size: 0.9rem;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Directory of All 23 Eligible Microsoft URLs -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <h3>Eligible Microsoft URLs & Quick Links (23 Targets)</h3>
+                                <p class="small-text text-muted" style="margin-top: 0.2rem;">Click any target to copy a ready-to-share link pre-tagged with your Contributor ID (<code id="dir-contributor-id">studentamb_515349</code>) or load it directly into the builder.</p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="directory-controls">
+                                <div class="directory-filter-tabs" id="directory-tabs">
+                                    <button class="tab-btn active" data-category="all">All (23)</button>
+                                    <button class="tab-btn" data-category="Cloud & AI">Cloud & AI</button>
+                                    <button class="tab-btn" data-category="Developer Tools">Developer Tools</button>
+                                    <button class="tab-btn" data-category="Fabric & Power Platform">Power Platform & Fabric</button>
+                                    <button class="tab-btn" data-category="Student & Community">Student & Community</button>
+                                    <button class="tab-btn" data-category="Learning">Learning</button>
+                                </div>
+                                <div style="min-width: 240px; flex-grow: 0.3;">
+                                    <input type="text" id="directory-search-input" class="form-control" placeholder="Search eligible domains / paths...">
+                                </div>
+                            </div>
+
+                            <div class="directory-grid" id="directory-grid-container">
+                                <!-- Populated dynamically by app.js -->
                             </div>
                         </div>
                     </div>

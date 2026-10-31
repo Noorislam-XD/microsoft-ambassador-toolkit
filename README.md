@@ -1,41 +1,47 @@
 # Ambassador Launchpad: MLSA Onboarding & Activity Tracker
 
-https://noorislam-xd.github.io/microsoft-ambassador-toolkit
+🌐 **Live Site:** [https://noorislam-xd.github.io/microsoft-ambassador-toolkit](https://noorislam-xd.github.io/microsoft-ambassador-toolkit)
 
-A local, interactive helper application to manage your onboarding checklist, correctly tag promotional links with your unique Contributor ID, and log your outreach activities.
+A comprehensive helper dashboard to manage your Microsoft Learn Student Ambassador onboarding checklist, verify Preferred Visitor URL eligibility, calculate ambassador points, and log your outreach activities with your unique Contributor ID (`studentamb_515349`).
+
+---
 
 ## 🚀 Features
 
-1. **Overview & Progress Bar**: Tracks your overall completion score for essential onboarding tasks.
-2. **Contributor URL Builder**: Automatically formats and appends your Contributor ID (`wt.mc_id=studentamb_515349`) to any Microsoft URL. Safe and robust parameter injection to guarantee your promotional traffic is credited.
-3. **Onboarding Checklist**: Actionable steps for linking your Discord account to GitHub, verifying your student status, and completing technical learning paths.
-4. **Activity Logger**: A persistent ledger to record your social media shares, hosted workshops, startup referrals, and Learn collections. Supports exporting and importing logs as JSON backups.
-5. **Quick Resources**: Quick links to the official Discord community, Student Ambassador Portal, and Microsoft Learn.
+1. **Overview & Live Eligibility Status**: Real-time diagnostic evaluation of your current Alpha Ambassador advancement eligibility (5/5 requirements check) and dynamic progress bars.
+2. **Ambassador Points Engine**: Automatically tracks points across onboarding tasks (25 pts each), generated eligible links (10 pts each), and logged activities (up to 100+ pts each + bonus points for eligible Microsoft targets).
+3. **URL Eligibility Rules & Validator**:
+   - Validates direct domains (e.g. `techcommunity.microsoft.com`, `azure.microsoft.com`).
+   - Validates direct paths (e.g. `microsoft.com/startups`, `microsoft.com/insidetrack`).
+   - Flags exclusions for unlisted domains or paths.
+   - Enforces the **Learn Plans restriction** (Learn Plans do not count toward Preferred Visitors).
+   - Enforces the **Direct URL rule** (rejects shortened links like `aka.ms` or `bit.ly`).
+4. **23 Eligible Targets Directory**: Instant one-click generation and copying of all 23 official Microsoft targets pre-tagged with your Contributor ID.
+5. **Contributor URL Builder**: Formats direct Microsoft URLs, strips language-locale segments (such as `/en-us/`) per MSA handbook requirements, and injects `wt.mc_id=studentamb_515349`.
+6. **Onboarding Checklist & Milestones**: Interactive setup checklist for Discord account linkage, Azure for Students verification, Technical Training (Cloud Skills Challenge), and first activity.
+7. **Activity Logger**: Persistent ledger to record social media shares, workshops, Founders Hub referrals, and Learn collections with JSON import/export backups.
 
 ---
 
-## 🛠️ How to Use
+## 📋 How Preferred Visitors Eligibility Works
 
-The app requires **no installation** and runs entirely in your browser using local persistence.
-
-### Option A: Open directly (easiest)
-1. Double-click the [index.html](file:///C:/Users/rengm/.gemini/antigravity/scratch/mlsa-dashboard/index.html) file to open it in your browser.
-2. Alternatively, run the following command in your terminal to open it:
-   ```powershell
-   Start-Process "C:\Users\rengm\.gemini\antigravity\scratch\mlsa-dashboard\index.html"
-   ```
-
-### Option B: Run a local HTTP server
-If you prefer running a local server to test the full web app experience:
-1. Open PowerShell and navigate to the project directory:
-   ```powershell
-   cd "C:\Users\rengm\.gemini\antigravity\scratch\mlsa-dashboard"
-   ```
-2. Start a Python web server:
-   ```powershell
-   python -m http.server 8000
-   ```
-3. Open your browser and navigate to `http://localhost:8000`.
+- **Domain Scope**: If a domain is listed, any direct page on that domain counts.
+- **Path Scope**: If a path is listed, that path and any pages under it count.
+- **Unlisted Exclusions**: If the domain or path is not listed, it does not count.
+- **Learn Plans Exclusion**: Microsoft Learn Plans do not count toward Preferred Visitors, even when using an eligible domain or path.
+- **Direct URLs Only**: Direct Microsoft URLs must be used. Shortened URLs (e.g., `aka.ms`, `bit.ly`) or links that redirect do not count.
 
 ---
 
+## 🛠️ How to Run Locally
+
+The app runs entirely in your browser using local persistence:
+
+### Option A: Open directly
+Open [`index.html`](file:///e:/microsoft%20amb/index.html) in your favorite web browser.
+
+### Option B: Local HTTP Server
+```powershell
+python -m http.server 8000
+```
+Then visit `http://localhost:8000`.
